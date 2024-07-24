@@ -1,0 +1,72 @@
+<%layout('layouts/boilerPlate')%>
+    <%-include('../partials/navbar')%>
+        <div class="row">
+            <div class="col-6 mx-auto">
+
+                <form action="/products/<%=FoundProduct._id%>?_method=PATCH" method="POST" class="needs-validation" novalidate>
+                    <div class="mb-3">
+                        <label for="naam">Products's name:</label>
+                        <input value="<%=FoundProduct.name%>" type="text" class="form-control" id="naam" name="name" placeholder="Ex. Air Jordan 5" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                          </div>
+                          <div class="invalid-feedback">
+                            Please enter Product's name.
+                          </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="img">Products's Img:</label>
+                        <input value="<%=FoundProduct.img%>" type="text" class="form-control" id="img" name="img" placeholder="Link of the img, Ex. https://" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                          </div>
+                          <div class="invalid-feedback">
+                            Please enter a valid Product's img link.
+                          </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="price">Products's Price:</label>
+                        <input value="<%=FoundProduct.price%>" type="number" class="form-control" id="price" name="price" placeholder="How much does it cost?" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                          </div>
+                          <div class="invalid-feedback">
+                            Please enter Product's price.
+                          </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="desc">Products's description:</label>
+                        <textarea value="<%=FoundProduct.desc%>" type="text" class="form-control" id="desc" name="desc" rows="3" placeholder="Ex. Limited Edition released by Nike in collaboration with Travis Scott"></textarea>
+                    </div>
+                    <button class="btn btn-success" type="submit">Edit Product</button>
+                </form>
+                
+                <form action="/products/<%=FoundProduct._id%>?_method=DELETE" method="post">
+                    <button class="btn btn-danger mt-2" type="submit">Delete Item</button>
+                </form>
+            </div>
+        </div>
+
+        <script>
+            (() => {
+                'use strict'
+              
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                const forms = document.querySelectorAll('.needs-validation')
+              
+                // Loop over them and prevent submission
+                Array.from(forms).forEach(form => {
+                  form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                      event.preventDefault()
+                      event.stopPropagation()
+                    }
+              
+                    form.classList.add('was-validated')
+                  }, false)
+                })
+              })()
+              </script>
+    </body>
+  </html>

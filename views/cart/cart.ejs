@@ -1,0 +1,11 @@
+<% layout('layouts/boilerPlate') %>
+<%- include('../partials/navbar') %>
+
+<ul>
+    <%for(let item of user.cart){%>
+        <li><%=item.name%>-- <%=item.price%></li>
+    <%}%>
+</ul>
+
+</body>
+</html>

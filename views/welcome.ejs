@@ -1,0 +1,22 @@
+<% layout('layouts/boilerPlate') %>
+<%- include('partials/navbar.ejs') %>
+
+<div class="welcome-page container-fluid text-center position-relative">
+  <div class="row">
+    <div class="col-12 p-0">
+      <img src="https://i.imgur.com/q3LofID.png" class="img-fluid w-100" alt="Shoes" style="height: 100vh; object-fit: cover;">
+      <div class="welcome-text position-absolute shadow-xl top-50 start-50 translate-middle text-white">
+        <h1 class="mt-4 caret-orange-500">Welcome to Our Shoe Store!</h1>
+        <p class="lead">Discover the best shoes for all occasions. Quality and comfort guaranteed.</p>
+        <a href="/products" class="btn btn-primary btn-lg">Shop Now</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  gsap.from('.welcome-text h1', { opacity: 0, duration: 1, delay: 0.5, y: -50 });
+  gsap.from('.welcome-text p', { opacity: 0, duration: 1, delay: 1, y: -50 });
+  gsap.from('.welcome-text a', { opacity: 0, duration: 1, delay: 1.5, y: -50 });
+  gsap.from('.navbar', { opacity: 0, duration: 1, delay: 0.5, y: -50 });
+</script>

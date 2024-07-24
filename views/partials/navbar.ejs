@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+        <img src="https://i.imgur.com/HujftHR.png" alt="Logo" style="height: 40px;">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/products">Products</a>
+          </li>
+          <% if(currentUser && currentUser.role === 'seller') { %>
+            <li class="nav-item">
+              <a class="nav-link" href="/product/new">Add Products</a>
+            </li>
+          <% } %>
+        </ul>
+        <div class="d-flex ms-auto">
+          <% if(!currentUser){ %>
+            <a href="/login"><button type="button" class="btn btn-success mx-1">Login</button></a>
+            <a href="/register"><button type="button" class="btn btn-primary mx-1">Sign Up</button></a>
+          <% } else { %>
+            <a class="mx-1" href="">
+              <span class="material-symbols-outlined text-white">account_circle</span>
+            </a>
+            <p class="my-auto mx-auto text-white">Hello, <%= currentUser.username %></p>
+            <% if(currentUser.role === 'buyer') { %>
+              <a class="mx-3 nav-link position-relative" href="/user/cart">
+                <i class=" my-auto material-symbols-outlined text-white">shopping_cart</i>
+                <span class=" mx-auto position-absolute top-0 start-100 my-auto translate-middle badge rounded-pill bg-danger">
+                  <%= currentUser.cart.length %>
+                </span>
+              </a>
+            <% } %>
+            <a href="/logout"><button type="button" class="btn btn-danger mx-1">Logout</button></a>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  <script>
+    gsap.from('.navbar-nav .nav-link', { opacity: 0, duration: 1, delay: 0.5, y: -50 });
+    gsap.from('.btn', { opacity: 0, duration: 1, delay: 1, y: -50 });
+  </script>
+  
